@@ -1,4 +1,4 @@
-# Blank README
+# Nuxt Initial README
 
 ## Feature
 - Nuxt.js 3.17.5
