@@ -6,6 +6,8 @@
 - I18n Support (@nuxtjs/i18n 9.5.5)
 - SEO Friendly
 - Responsive Design
+- Google Analytics 4 Support (Optional)
+- Google Adsense Support (Optional)
 
 ## Project Structure
 ```

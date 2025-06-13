@@ -1,14 +1,20 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import { resolve } from 'path'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/i18n', '@nuxtjs/sitemap', '@nuxtjs/robots'],
+  modules: [
+    '@nuxtjs/i18n',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    'nuxt-gtag'
+  ].filter(Boolean),
   plugins: ['~/plugins/lucide.ts'],
   runtimeConfig: {
     public: {
       siteUrl: 'http://localhost:3000',
       email: 'contact@example.com',
       defaultLocale: 'en',
+      ga4Id: process.env.NUXT_PUBLIC_GA4_ID || '',
+      adsenseClient: process.env.NUXT_PUBLIC_ADSENSE_CLIENT || '',
     },
   },
   app: {
@@ -74,6 +80,28 @@ export default defineNuxtConfig({
     enabled: true,
     allow: ['/'],
     sitemap: ['http://localhost:3000/sitemap.xml'],
+  },
+  gtag: {
+    id: process.env.NUXT_PUBLIC_GA4_ID,
+    // Only load nuxt-gtag when NUXT_PUBLIC_GA4_ID environment variable exists
+    enabled: process.env.NUXT_PUBLIC_GA4_ID ? true : false,
+    initCommands: [
+      ['consent', 'default', {
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        wait_for_update: 500,
+      }]
+    ]
+  },
+  scripts: {
+    registry: process.env.NUXT_PUBLIC_ADSENSE_CLIENT ? {
+      googleAdsense: {
+        client: process.env.NUXT_PUBLIC_ADSENSE_CLIENT,
+        autoAds: true
+      }
+    } : {}
   },
   devtools: { enabled: true },
   compatibilityDate: '2025-06-11',

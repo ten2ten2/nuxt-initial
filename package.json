@@ -9,11 +9,14 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
+    "@nuxt/scripts": "^0.11.8",
     "@nuxtjs/i18n": "^9.5.5",
     "@nuxtjs/robots": "^5.2.10",
     "@nuxtjs/sitemap": "^7.3.1",
+    "@unhead/vue": "^2.0.10",
     "lucide-vue-next": "^0.514.0",
-    "nuxt": "^3.17.5"
+    "nuxt": "^3.17.5",
+    "nuxt-gtag": "^3.0.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.10",
